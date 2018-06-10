@@ -1,0 +1,28 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - python
+  fixme:
+    enabled: true
+  markdownlint:
+    enabled: false
+  pep8:
+    enabled: true
+  radon:
+    enabled: true
+    config:
+      python_version: 2
+ratings:
+  paths:
+  - "**.inc"
+  - "**.module"
+  - "**.py"
+exclude_paths:
+- dist/
+- tests/
+- build/
+- docs/
+- .pylintrc

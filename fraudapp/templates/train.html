@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>{{action}} Train</h3>
+
+<form method="POST" enctype="multipart/form-data">
+
+  <div class="form-group">
+    <label for="name">Experiment Name</label>
+    <input type="text" name="name" id="name" value="{{experiment.name}}" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" value="{{experiment.description}}" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="lossvalue">Loss Value</label>
+    <input type="range" min="2" max="12" name="lossvalue" id="lossvalue" value="{{experiment.lossvalue}}" oninput="this.form.lossvalue.value=this.value" class="form-control"/>
+  </div>
+
+
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+{% endblock %}

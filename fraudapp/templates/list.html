@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.args.get('message') %}
+<div class="alert alert-success" role="alert">
+  <strong>{{request.args.get('message') }}</strong>
+</div>
+{% endif %}
+<!--<h3>Books</h3>-->
+<!--<a href="/books/add" class="btn btn-success btn-sm">-->
+  <!--<i class="glyphicon glyphicon-plus"></i>-->
+  <!--Add book-->
+<!--</a>-->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Loss Value</th>
+            <th scope="col">Accuracy</th>
+            <th scope="col">Precision</th>
+            <th scope="col">Recall</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+  <tbody>
+{% for exp in experiments %}
+    <tr>
+        <th scope="row">{{exp.id}}</th>
+        <td>{{exp.name}}</td>
+        <td>{{exp.description}}</td>
+        <td>{{exp.lossvalue}}</td>
+        <td>{{exp.accuracy}}</td>
+        <td>{{exp.precision}}</td>
+        <td>{{exp.recall}}</td>
+        <td>{{exp.createdDate}}</td>
+        <td>
+            <a href="/fraud/{{exp.id}}/delete" class="btn btn-danger btn-sm">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </td>
+    </tr>
+{% else %}
+<p>No Experiments found</p>
+{% endfor %}
+</table>
+{% if next_page_token %}
+<nav>
+  <ul class="pager">
+    <li><a href="?page_token={{next_page_token}}">More</a></li>
+  </ul>
+</nav>
+{% endif %}
+
+{% endblock %}
