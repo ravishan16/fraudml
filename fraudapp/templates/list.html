@@ -17,10 +17,11 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
-            <th scope="col">Loss Value</th>
+            <th scope="col">Cost of FP</th>
             <th scope="col">Accuracy</th>
             <th scope="col">Precision</th>
             <th scope="col">Recall</th>
+            <th scope="col">Recall Dollars</th>
             <th scope="col">Created Date</th>
             <th scope="col">Action</th>
         </tr>
@@ -31,10 +32,11 @@
         <th scope="row">{{exp.id}}</th>
         <td>{{exp.name}}</td>
         <td>{{exp.description}}</td>
-        <td>{{exp.lossvalue}}</td>
+        <td>{{exp.cost}}</td>
         <td>{{exp.accuracy}}</td>
         <td>{{exp.precision}}</td>
         <td>{{exp.recall}}</td>
+        <td>{{exp.recall_dollars}}</td>
         <td>{{exp.createdDate}}</td>
         <td>
             <a href="/fraud/{{exp.id}}/delete" class="btn btn-danger btn-sm">

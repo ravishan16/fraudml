@@ -3,8 +3,10 @@
 """DB Model."""
 
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
+# from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import pandas as pd
 
 builtin_list = list
 
@@ -31,10 +33,11 @@ class Experiment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     description = db.Column(db.String(255))
-    lossvalue = db.Column(db.Integer, unique=True)
+    cost = db.Column(db.Integer, unique=True)
     accuracy = db.Column(db.Float)
     precision = db.Column(db.Float)
     recall= db.Column(db.Float)
+    recall_dollars= db.Column(db.Float)
     createdDate = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
@@ -47,9 +50,16 @@ def list(limit=10, cursor=None):
              .order_by(Experiment.id.desc())
              .limit(limit)
              .offset(cursor))
-    books = builtin_list(map(from_sql, query.all()))
-    next_page = cursor + limit if len(books) == limit else None
-    return (books, next_page)
+    experiment = builtin_list(map(from_sql, query.all()))
+    next_page = cursor + limit if len(experiment) == limit else None
+    return (experiment, next_page)
+
+
+def trend():
+    query = (Experiment.query
+             .order_by(Experiment.cost.asc()))
+    experiment = builtin_list(map(from_sql, query.all()))
+    return experiment
 
 # [START create]
 def create(data):
@@ -59,9 +69,9 @@ def create(data):
     return from_sql(experiment)
 # [END create]
 
-def find(lossvalue):
+def find(cost):
 
-    experiment = Experiment.query.filter_by(lossvalue=lossvalue).first()
+    experiment = Experiment.query.filter_by(cost=cost).first()
     if not experiment:
         return None
     return from_sql(experiment)
@@ -72,18 +82,35 @@ def delete(id):
     db.session.commit()
 
 
-def _create_database():
+def _create_database(SQLALCHEMY_DATABASE_URI=None):
     """
     If this script is run directly, create all the tables necessary to run the
     application.
     """
     app = Flask(__name__)
-    app.config.from_pyfile('../config.py')
+    if SQLALCHEMY_DATABASE_URI:
+        app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+    else:
+        app.config.from_pyfile('../config.py')
     init_app(app)
     with app.app_context():
         db.create_all()
     print("All tables created")
 
+def _drop_database(SQLALCHEMY_DATABASE_URI=None):
+    """
+    If this script is run directly, create all the tables necessary to run the
+    application.
+    """
+    app = Flask(__name__)
+    if SQLALCHEMY_DATABASE_URI:
+        app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+    else:
+        app.config.from_pyfile('../config.py')
+    init_app(app)
+    with app.app_context():
+        db.drop_all()
+    print("All tables created")
 
 if __name__ == '__main__':
     _create_database()

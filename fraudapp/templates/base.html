@@ -4,7 +4,8 @@
     <title>Fraud Detection</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap332-min.css') }}">
+    <script src='{{ url_for('static', filename='Chart.min.js') }}'></script>
   </head>
   <body>
     <div class="navbar navbar-default">
@@ -13,10 +14,12 @@
           <div class="navbar-brand">Fraud Detection</div>
         </div>
         <ul class="nav navbar-nav">
-          <li><a href="/">List</a></li>
-          <li><a href="/fraud/train">Train</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/fraud/train">Experiment</a></li>
+          <li><a href="/fraud/trend">Trend</a></li>
         </ul>
       </div>
+
     </div>
     <div class="container">
       {% block content %}{% endblock %}

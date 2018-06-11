@@ -1,7 +1,12 @@
-Flask==1.0.2
-gunicorn==19.8.1
-pandas==0.22.0
-numpy==1.14.2
+Flask
+SQLAlchemy
+gunicorn
+pandas
+numpy
 Flask-SQLAlchemy
-xgboost==0.72
+xgboost
 sklearn
+nose
+flask_testing
+pylint
+coverage

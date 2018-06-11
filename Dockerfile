@@ -1,7 +1,5 @@
-FROM python:2.7-alpine
+FROM python:2.7
 MAINTAINER Ravishankar Sivasubramaniam "contact@ravishankars.com"
-
-RUN addgroup -S flaskuser && adduser -S -g flaskuser flaskuser
 
 #ADD . /flaskapp
 ENV HOME /fraudapp

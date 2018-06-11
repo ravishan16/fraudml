@@ -26,7 +26,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
         model = get_model()
         model.init_app(app)
 
-    # Register the Bookshelf CRUD blueprint.
+    # Register the Fraud CRUD blueprint.
     from .fraud import fraud
     app.register_blueprint(fraud, url_prefix='/fraud')
 

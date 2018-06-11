@@ -11,6 +11,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import make_scorer
 import xgboost as xg
 from sklearn.model_selection import GridSearchCV
+from random import randrange, uniform
 
 def my_custom_loss_func(ground_truth, predictions):
     diff = np.abs(ground_truth - predictions).max()
@@ -33,7 +34,7 @@ def preprocess(x):
 
     return x
 
-def train(loss_value):
+def train(cost):
     my_path = os.path.abspath(os.path.dirname(__file__))
     train_data_file = os.path.join(my_path,'fraud.csv')
     fraud_df = pd.read_csv(train_data_file)
@@ -80,4 +81,4 @@ def train(loss_value):
     print("Accuracy: " + str(accuracy_score(test['class'], predictions)))
     print("Precision: " + str(precision_score(test['class'], predictions)))
     print("Recall: " + str(recall_score(test['class'], predictions)))
-    return accuracy_score(test['class'], predictions),precision_score(test['class'], predictions),recall_score(test['class'], predictions)
+    return accuracy_score(test['class'], predictions),precision_score(test['class'], predictions),recall_score(test['class'], predictions),uniform(0, 10)
