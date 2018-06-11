@@ -1,6 +1,5 @@
 Flask
 SQLAlchemy
-gunicorn
 pandas
 numpy
 Flask-SQLAlchemy

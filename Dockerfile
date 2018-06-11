@@ -8,4 +8,5 @@ RUN apt-get install -y gunicorn
 COPY . /fraudapp
 WORKDIR /fraudapp
 RUN pip install -r requirements.txt
+EXPOSE 8080
 CMD ["gunicorn","-w","4", "-b", "0.0.0.0:8080","-t","180", "main:app"]

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>{{action}} Train</h3>
+<h3>Train</h3>
 
-<form method="POST" enctype="multipart/form-data">
+<form name="train" method="POST" enctype="multipart/form-data">
 
   <div class="form-group">
     <label for="name">Experiment Name</label>
@@ -18,10 +18,17 @@
   <div class="form-group">
     <label for="cost">Cost of False Positive</label>
     <input type="range" min="2" max="12" name="cost" id="cost" value="{{experiment.cost}}" oninput="this.form.cost.value=this.value" class="form-control"/>
+    <output name="costOutput" id="costOutput">{{experiment.cost}}</output>
   </div>
 
 
   <button type="submit" class="btn btn-success">Train</button>
 </form>
+
+<script>
+   document.train.cost.oninput = function(){
+    document.train.costOutput.value = document.train.cost.value;
+ }
+</script>
 
 {% endblock %}
