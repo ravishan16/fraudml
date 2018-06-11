@@ -29,9 +29,5 @@ class TestFraudApp(TestCase):
         result = self.client.get('/')
         assert result.status_code == 302
 
-    def test_trend(self):
-        """Test Trend ."""
-        result = self.client.post('fraud/trend')
-        assert result.status_code == 302
 
 
