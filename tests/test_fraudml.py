@@ -28,18 +28,6 @@ class TestFraudApp(TestCase):
         """Test Experiment List ."""
         result = self.client.get('/')
         assert result.status_code == 302
-    #
-    def test_train(self):
-        """Test Train ."""
-        payload = json.dumps(dict(
-            name="test",
-            description="test",
-            cost=14
-        ))
-        result = self.client.post('fraud/train',
-                                  data=payload,
-                                  content_type='application/json')
-        assert result.status_code == 302
 
     def test_trend(self):
         """Test Trend ."""
