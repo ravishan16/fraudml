@@ -13,8 +13,8 @@ Fraus Detection Machine Learning App
 
 Flask App, SQLAchemy, SQLite, Gunicorn, Docker, Microservice, Python
 
-[![Build Status](https://travis-ci.org/ravishan16/FlaskApp.svg?branch=master)](https://travis-ci.org/ravishan16/FlaskApp)[![Code Climate](https://codeclimate.com/github/ravishan16/FlaskApp/badges/gpa.svg)](https://codeclimate.com/github/FlaskApp/CountByAlexa)[![Test Coverage](https://codeclimate.com/github/ravishan16/FlaskApp/badges/coverage.svg)](https://codeclimate.com/github/ravishan16/FlaskApp)[![Issue Count](https://codeclimate.com/github/ravishan16/FlaskApp/badges/issue_count.svg)](https://codeclimate.com/github/ravishan16/FlaskApp)
-[![Docker Hub](https://hub.docker.com/public/images/logos/mini-logo.svg)](https://hub.docker.com/r/ravishan/flaskapp/)
+[![Build Status](https://travis-ci.org/ravishan16/fraudml.svg?branch=master)](https://travis-ci.org/ravishan16/fraudml)
+[![Docker Hub](https://hub.docker.com/public/images/logos/mini-logo.svg)](https://hub.docker.com/r/ravishan/fraudml/)
 
 Setup DB
 ========
